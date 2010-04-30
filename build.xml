@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="jar" name="heritrix-cs-ui">
+
+    <!-- heritrix-cassandra version -->
+    <property name="version" value="0.1" />
+
+    <!-- Modify the version numbers of Heritrix
+          here if you want to build against different versions -->
+    <property name="heritrix-version" value="3.0.0" />
+    <!-- After modifying the version number, don't forget to add
+          the dependent jar files in the corresponding
+          lib/heritrix-{version} folder -->
+
+    <property name="lib.dir" value="${basedir}/lib" />
+    <property name="build.dir" value="build" />
+    <property name="src.dir" value="src" />
+    <property name="target.dir" value="target" />
+
+    <!-- ================================= 
+          target: clean              
+         ================================= -->
+    <target name="clean" description="--> clean the project">
+        <delete dir="${build.dir}" quiet="true"/>
+        <delete dir="${target.dir}" quiet="true"/>
+    </target>
+
+    <!-- ================================= 
+          target: compile
+         ================================= -->
+    <target name="compile" depends="clean" description="--> compile the project">
+        <mkdir dir="${build.dir}" />
+        <javac srcdir="${src.dir}" destdir="${build.dir}">
+          <classpath>
+            <pathelement path="${classpath}"/>
+            <fileset dir="${lib.dir}">
+              <include name="*.jar" />
+              <include name="heritrix-${heritrix-version}/*.jar" />
+            </fileset>
+          </classpath>
+        </javac>
+    	  <property name="msg" value="heritrix-cs-ui-${version}"/>
+    </target>
+
+    <!-- ================================= 
+          target: jar
+         ================================= -->
+    <target name="jar" depends="compile" description="--> create the jar file">
+      <mkdir dir="${target.dir}" />
+    	<jar destfile="${target.dir}/heritrix-cs-ui-${version}.jar">
+      	<fileset dir="${build.dir}"/>
+    	</jar>
+    </target>
+
+</project>
