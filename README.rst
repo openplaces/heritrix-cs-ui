@@ -7,7 +7,7 @@ Heritrix UI plugin for exposing continuous seeding via action directories
 Getting Started
 ---------------
 
-1) Download a version of heritrix-cs-ui-*.jar and copy it into the **lib** folder of your Heritrix install.
+1) Download a version of heritrix-cs-ui-_.jar and copy it into the **lib** folder of your Heritrix install.
 
 2) Run Heritrix with the following appended to the script (all previous arguments are still valid):
 
