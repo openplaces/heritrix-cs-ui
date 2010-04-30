@@ -71,7 +71,7 @@ public class SeedResource extends BaseResource {
 	        	LOGGER.info("Action Directory: " + actionDir.getAbsolutePath());
 
 	        	if (actionDir.exists()) {
-	        		File seedFile = new File(actionDir, "new.seed");
+	        		File seedFile = new File(actionDir, "new.seeds");
 		        	LOGGER.info("Action Directory: " + seedFile.getAbsolutePath());
 		        	
 		        	try{
