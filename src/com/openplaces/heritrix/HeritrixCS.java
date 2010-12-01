@@ -17,10 +17,11 @@ public class HeritrixCS extends Heritrix {
 
 		Router router = (Router) engineApplication.getRoot();
 		router.attach("/engine/job/{job}/seeding", SeedResource.class);
+		router.attach("/engine/job/{job}/seed-stats", SeedStatResource.class);
+		router.attach("/engine/job/{job}/seed-stats/{seed_url}", SeedStatResource.class);
 	}
 
-	public static void main(String[] args) 
-    throws Exception {
+	public static void main(String[] args) throws Exception {
         new HeritrixCS().instanceMain(args); 
     }
 }
