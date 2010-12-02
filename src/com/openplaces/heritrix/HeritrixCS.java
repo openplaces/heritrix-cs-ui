@@ -8,8 +8,7 @@ import org.restlet.Router;
 
 public class HeritrixCS extends Heritrix {
 
-	public void instanceMain(String[] args)
-    	throws Exception {
+	public void instanceMain(String[] args) throws Exception {
 		super.instanceMain(args);
 
 		RateLimitGuard rateLimitGuard = (RateLimitGuard) getComponent().getDefaultHost().getRoutes().get(0).getNext();

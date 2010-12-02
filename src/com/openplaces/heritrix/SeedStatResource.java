@@ -2,9 +2,7 @@ package com.openplaces.heritrix;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
 import java.io.Writer;
-import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -53,13 +51,8 @@ public class SeedStatResource extends BaseResource {
 		cj = getEngine().getJob(TextUtils.urlUnescape((String)req.getAttributes().get("job")));
 
 		String seedUrlString = (String)req.getAttributes().get("seed_url");
-		if (seedUrlString != null) {
-			try {
-				_seedUrl = URLDecoder.decode(seedUrlString, CharacterSet.UTF_8.getName());
-			} catch (UnsupportedEncodingException e) {
-				_seedUrl = seedUrlString;
-			}
-		}
+		if (seedUrlString != null)
+			_seedUrl = TextUtils.urlUnescape(seedUrlString);
 	}
 
 	protected Engine getEngine() {
