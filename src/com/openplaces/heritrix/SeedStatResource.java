@@ -156,12 +156,21 @@ public class SeedStatResource extends BaseResource {
 				Map<String, CrawlHost> crawlHosts = getCrawlHosts();
 				Map<String, List<SeedRecord>> seedRecords = getSeedRecords(crawlHosts);
 
+				StatisticsTracker stats = cj.getCrawlController().getStatisticsTracker();
+
 				for (CrawlHost host : crawlHosts.values()) {
 					xmlWriter.startElement("host");
 					writeDataElement(xmlWriter, "name", host.getHostName());
 					writeDataElement(xmlWriter, "ip", (host.getIP() != null) ? host.getIP().getHostAddress() : null);
+					String totalDownloaded;
+					try {
+						totalDownloaded = Long.toString(stats.getBytesPerHost(host.getHostName()));
+					} catch (Exception e) {
+						totalDownloaded = null;
+					}
+					writeDataElement(xmlWriter, "bytesDownloaded", totalDownloaded);
 
-					for(Map.Entry<String, Object> entry : host.getSubstats().singleLineReportData().entrySet()) {
+					for(Map.Entry<String, Object> entry : host.getSubstats().shortReportMap().entrySet()) {
 						writeDataElement(xmlWriter, entry.getKey(), entry.getValue().toString());
 					}
 
@@ -223,7 +232,7 @@ public class SeedStatResource extends BaseResource {
 			for (CrawlHost crawlHost : crawlHosts.values()) {
 				pw.println("<p>");
 				pw.println(crawlHost.getHostName());
-				pw.println(crawlHost.getSubstats().singleLineReport());
+				pw.println(crawlHost.getSubstats().shortReportMap());
 				pw.println("</p>");
 			}
 		}

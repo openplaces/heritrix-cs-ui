@@ -2,11 +2,11 @@
 <project basedir="." default="jar" name="heritrix-cs-ui">
 
     <!-- heritrix-cassandra version -->
-    <property name="version" value="0.2" />
+    <property name="version" value="0.4" />
 
     <!-- Modify the version numbers of Heritrix
           here if you want to build against different versions -->
-    <property name="heritrix-version" value="3.0.0" />
+    <property name="heritrix-version" value="3.0.1" />
     <!-- After modifying the version number, don't forget to add
           the dependent jar files in the corresponding
           lib/heritrix-{version} folder -->
