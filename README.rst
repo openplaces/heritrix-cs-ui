@@ -29,9 +29,9 @@ To build against another version of Heritrix:
 
 1) Obtain the heritrix-cs-ui source from http://github.com/openplaces/heritrix-cs-ui
 
-2) Open up **build.xml** and modify the "heritrix-version" property, and "version" to your own custom value.
+2) Install Gradle (http://www.gradle.org/installation.html)
 
-3) Add a folder in **lib** named "heritrix-{heritrix-version}" that corresponds to the version you defined in the previous step.
+3) Open up **build.gradle** and modify the "heritrix_version" property, and "version" to your own custom value.
 
-4) Run "ant" from the command line and your newly packaged jar should be in the **target** folder.
+4) Run "gradle jar" from the command line and your newly packaged jar should be in the **build/libs** folder.
 
