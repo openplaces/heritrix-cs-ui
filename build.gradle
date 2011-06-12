@@ -1,0 +1,29 @@
+// Heritrix-CS-UI version
+version = '0.5'
+
+// Modify these values if you want to build against different versions of Heritrix
+heritrix_version = '3.1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.6
+
+jar {
+  manifest {
+      attributes 'Implementation-Title': 'Heritrix Continuous Seeding UI', 'Implementation-Version': version
+  }
+}
+
+repositories {
+  mavenRepo urls: "http://builds.archive.org:8080/maven2"
+  mavenRepo urls: "http://maven.restlet.org/"
+  mavenCentral()
+}
+
+dependencies {
+	compile 'org.archive.heritrix:heritrix-commons:' + heritrix_version
+	compile 'org.archive.heritrix:heritrix-engine:' + heritrix_version
+}
+

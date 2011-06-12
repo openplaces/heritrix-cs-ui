@@ -1,8 +1,10 @@
+/bin
 /target
 /.classpath
 /.settings
 /.project
 /bin-eclipse
 /build
+/.gradle
 adhoc.keystore
 heritrix_dmesg.log
